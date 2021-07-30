@@ -56,10 +56,11 @@ namespace CabInvoiceTestProject
             //Arrange
             Ride[] rides = { new Ride(12.0, 5), new Ride(3.5, 1) };
             //Act
+            double expected = 80.5;
             InvoiceSummary summary = invoice.CalculateFare(rides);
-            InvoiceSummary expectedSummary = new InvoiceSummary(2, 161.0);
+            double actual = summary.averageFare;
             //Assert
-            Assert.AreEqual(summary, expectedSummary);
+            Assert.AreEqual(expected, actual);
         }
     }
 }
