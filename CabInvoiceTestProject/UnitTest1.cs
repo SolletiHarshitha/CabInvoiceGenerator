@@ -83,5 +83,41 @@ namespace CabInvoiceTestProject
             //Assert
             Assert.AreEqual(expected,actual);
         }
+        /// <summary>
+        /// Given Normal Ride type should return total fare
+        /// </summary>
+        [TestMethod]
+        [TestCategory("Normal")]
+        public void GivenDistanceAndTimeShouldReturnFareForNormalType()
+        {
+            ///AAA Methodology
+            //Arrange
+            double distance = 5; //in km
+            int time = 20;   //in minutes
+            //Act
+            double expected = 70;
+            InvoiceGenerator invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
+            double actual = invoiceGenerator.CalculateFare(distance, time);
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Given Premium Ride type should return total fare
+        /// </summary>
+        [TestMethod]
+        [TestCategory("Premium")]
+        public void GivenDistanceAndTimeShouldReturnFareForPremiumType()
+        {
+            ///AAA Methodology
+            //Arrange
+            double distance = 5; //in km
+            int time = 20;   //in minutes
+            //Act
+            double expected = 115;
+            InvoiceGenerator invoiceGenerator = new InvoiceGenerator(RideType.PREMIUM);
+            double actual = invoiceGenerator.CalculateFare(distance, time);
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
