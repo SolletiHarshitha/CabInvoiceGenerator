@@ -56,10 +56,11 @@ namespace CabInvoiceTestProject
             //Arrange
             Ride[] rides = { new Ride(12.0, 5), new Ride(3.5, 1) };
             //Act
+            double expected = 80.5;
             InvoiceSummary summary = invoice.CalculateFare(rides);
-            InvoiceSummary expectedSummary = new InvoiceSummary(2, 161.0);
+            double actual = summary.averageFare;
             //Assert
-            Assert.AreEqual(summary, expectedSummary);
+            Assert.AreEqual(expected,actual);
         }
 
         [TestMethod]
@@ -68,14 +69,17 @@ namespace CabInvoiceTestProject
         {
             ///AAA Methodology
             //Arrange
-            string userId = null;
+            string userId = "John";
             Ride[] rides = { new Ride(12.0, 5), new Ride(3.5, 1) };
             //Act
-            RideRepository.AddRides(userId, rides);
+            RideRepository rideRepository = new RideRepository();
+            rideRepository.AddRide(userId, rides);
+            Ride[] actualRides = rideRepository.GetRides(userId);
             InvoiceSummary summary = invoice.CalculateFare(rides);
-            InvoiceSummary expectedSummary = new InvoiceSummary(2, 161.0);
+            double expected = 80.5;
+            double actual = summary.averageFare;
             //Assert
-            Assert.AreEqual(summary, expectedSummary);
+            Assert.AreEqual(expected,actual);
         }
     }
 }
