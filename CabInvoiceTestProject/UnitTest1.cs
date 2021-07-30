@@ -62,7 +62,9 @@ namespace CabInvoiceTestProject
             //Assert
             Assert.AreEqual(expected,actual);
         }
-
+        /// <summary>
+        /// Given User id returns the invoice
+        /// </summary>
         [TestMethod]
         [TestCategory("Invoice")]
         public void GivenDistanceAndTimeShouldReturnInvoice()
